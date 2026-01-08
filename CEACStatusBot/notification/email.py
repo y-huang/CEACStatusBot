@@ -1,4 +1,5 @@
 from smtplib import SMTP_SSL
+from smtplib import SMTP
 from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 from email.header import Header
@@ -32,7 +33,8 @@ class EmailNotificationHandle(NotificationHandle):
         msg['To'] = ";".join(self.__toEmail)
         msg.attach(MIMEText(mail_content,'plain','utf-8'))
 
-        smtp = SMTP(self.__hostAddress, self.__hostPort) + starttls() # ssl登录
+        smtp = SMTP(self.__hostAddress, self.__hostPort)
+        smtp.starttls() # ssl登录
         print(smtp.login(self.__fromEmail,self.__emailPassword))
         print(smtp.sendmail(self.__fromEmail,self.__toEmail,msg.as_string()))
         smtp.quit()
