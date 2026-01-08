@@ -6,7 +6,11 @@ on:
       - main
   workflow_dispatch:
   schedule:
-    - cron: '0 * * * *' # hourly check
+    # Hourly (9-18 PT / 17-02 UTC) for Jan 30 - Feb 15
+    - cron: '0 9-18 28-31 1 *'
+    - cron: '0 9-18 1-15 2 *'
+    # Daily check for all other times
+    - cron: '0 0 * * *'
 
 jobs:
   build:
