@@ -7,8 +7,8 @@ on:
   workflow_dispatch:
   schedule:
     # Hourly (9-18 PT / 17-02 UTC) for Jan 30 - Feb 15
-    - cron: '0 9-18 28-31 1 *'
-    - cron: '0 9-18 1-15 2 *'
+    - cron: '0 17-23,0-2 28-31 1 *'
+    - cron: '0 17-23,0-2 1-15 2 *'
     # Daily check for all other times
     - cron: '0 0 * * *'
 
