@@ -19,38 +19,22 @@ class EmailNotificationHandle(NotificationHandle):
             self.__hostPort = int(port)
         else:
             self.__hostPort = 0
-
-    def format_result_text(self, result):
-        lines = []
-        lines.append(f"Application Number: {result.get('application_num_origin')}")
-        lines.append(f"Visa Type: {result.get('visa_type')}")
-        lines.append(f"Status: {result.get('status')}")
-        lines.append(f"Case Created: {result.get('case_created')}")
-        lines.append(f"Last Updated: {result.get('case_last_updated')}")
-        lines.append("")
-        lines.append(f"Description:")
-        lines.append(result.get('description', "").strip())
-        lines.append("")
-        lines.append("- CEACStatusBot")
-        return "\n".join(lines)
     
     def format_result_text(self, result):
-        html = f"""
-        <html>
-          <body>
-            <p>Application Number: {result.get('application_num_origin')}</p>
-            <p>Visa Type: {result.get('visa_type')}</p>
-            <p>Status: <b>{result.get('status')}</b></p>
-            <p>Case Created: {result.get('case_created')}</p>
-            <p>Last Updated: <b>{result.get('case_last_updated')}</b></p>
-            <br>
-            <p>Description:</p>
-            <p>{result.get('description', '').strip()}</p>
-            <br>
-            <p>-- CEACStatusBot</p>
-          </body>
-        </html>
-        """
+        html = f"""<html>
+            <body style="font-family: Arial, sans-serif; font-size:14px; line-height:1.4; margin:0; padding:0;">
+            <div>Application Number: {result.get('application_num_origin')}</div>
+            <div>Visa Type: {result.get('visa_type')}</div>
+            <div>Status: <b>{result.get('status')}</b></div>
+            <div>Case Created: {result.get('case_created')}</div>
+            <div>Last Updated: {result.get('case_last_updated')}</div>
+            <br>
+            <div><b>Description:</b></div>
+            <div>{result.get('description', '').strip()}</div>
+            <br>
+            <div>-- CEACStatusBot</div>
+            </body>
+            </html>"""
         return html
     
     def send(self, result):
