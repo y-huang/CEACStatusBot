@@ -27,9 +27,9 @@ class EmailNotificationHandle(NotificationHandle):
             <div>Visa Type: {result.get('visa_type')}</div>
             <div>Status: <b>{result.get('status')}</b></div>
             <div>Case Created: {result.get('case_created')}</div>
-            <div>Last Updated: {result.get('case_last_updated')}</div>
+            <div>Last Updated: <b>{result.get('case_last_updated')}</b></div>
             <br>
-            <div><b>Description:</b></div>
+            <div>Description:</div>
             <div>{result.get('description', '').strip()}</div>
             <br>
             <div>-- CEACStatusBot</div>
