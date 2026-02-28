@@ -33,9 +33,9 @@ class EmailNotificationHandle(NotificationHandle):
         lines.append("")
         lines.append("- CEACStatusBot")
         return "\n".join(lines)
-
+    
     def format_result_text(self, result):
-        html = f"""
+        html = f"""
         <html>
           <body>
             <p>Application Number: {result.get('application_num_origin')}</p>
@@ -51,7 +51,7 @@ class EmailNotificationHandle(NotificationHandle):
           </body>
         </html>
         """
-        return html
+        return html
     
     def send(self, result):
         
