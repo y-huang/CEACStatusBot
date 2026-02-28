@@ -33,6 +33,25 @@ class EmailNotificationHandle(NotificationHandle):
         lines.append("")
         lines.append("- CEACStatusBot")
         return "\n".join(lines)
+
+    def format_result_text(self, result):        
+        html = f"""
+        <html>
+          <body>
+            <p>Application Number: {result.get('application_num_origin')}</p>
+            <p>Visa Type: {result.get('visa_type')}</p>
+            <p>Status: <b>{result.get('status')}</b></p>
+            <p>Case Created: {result.get('case_created')}</p>
+            <p>Last Updated: <b>{result.get('case_last_updated')}</b></p>
+            <br>
+            <p>Description:</p>
+            <p>{result.get('description', '').strip()}</p>
+            <br>
+            <p>-- CEACStatusBot</p>
+          </body>
+        </html>
+        """
+        return html
     
     def send(self, result):
         
@@ -45,7 +64,7 @@ class EmailNotificationHandle(NotificationHandle):
         msg["Subject"] = Header(mail_title,'utf-8')
         msg["From"] = self.__fromEmail
         msg['To'] = ";".join(self.__toEmail)
-        msg.attach(MIMEText(mail_content,'plain','utf-8'))
+        msg.attach(MIMEText(mail_content,'html','utf-8'))
 
         smtp = SMTP(self.__hostAddress, self.__hostPort)
         smtp.starttls() # ssl登录
