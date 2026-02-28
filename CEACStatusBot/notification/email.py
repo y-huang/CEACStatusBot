@@ -34,7 +34,7 @@ class EmailNotificationHandle(NotificationHandle):
         lines.append("- CEACStatusBot")
         return "\n".join(lines)
 
-    def format_result_text(self, result):        
+    def format_result_text(self, result):
         html = f"""
         <html>
           <body>
