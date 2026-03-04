@@ -21,6 +21,7 @@ class EmailNotificationHandle(NotificationHandle):
             self.__hostPort = 0
     
     def format_result_text(self, result):
+        print('RESULT:', result)
         html = f"""<html>
             <body style="font-family: Arial, sans-serif; font-size:14px; line-height:1.4; margin:0; padding:0;">
             <div>Application Number: {result.get('application_num_origin')}</div>
