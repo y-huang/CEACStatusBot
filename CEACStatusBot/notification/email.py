@@ -30,7 +30,7 @@ class EmailNotificationHandle(NotificationHandle):
             <div>Last Updated: <b>{result.get('case_last_updated')}</b></div>
             <br>
             <div>Description:</div>
-            <div>{result.get('description').strip()}</div>
+            <div>{result.get('description', '').strip()}</div>
             <br>
             <div>-- CEACStatusBot</div>
             </body>
